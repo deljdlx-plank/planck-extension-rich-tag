@@ -28,6 +28,13 @@ class Main extends Router
             $assets[] = new CSSFile('vendor/jstree/dist/themes/default/style.css');
 
 
+            $javascriptBootstrap = $this->getLocalJavascriptFile(
+                $this->router->getExtension()->getJavascriptsFilepath().'/bootstrap/category.js'
+            );
+            $assets[] = $javascriptBootstrap;
+
+
+
             $this->response->addExtraData('resources', $assets);
 
             $view = new Index();
@@ -38,7 +45,7 @@ class Main extends Router
 
 
         })->html()
-        ->setBuilder('/images')
+        ->setBuilder('/tag/categories')
         ;
 
 
