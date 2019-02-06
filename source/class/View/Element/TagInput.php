@@ -4,7 +4,7 @@ namespace Planck\Extension\RichTag\View\Element;
 
 use Planck\Extension\RichTag;
 
-class TagInput extends \Planck\Extension\ViewComponent\View\Element\TagInput
+class TagInput extends \Planck\Extension\Redactor\View\Component\TagInput
 {
 
     public function __construct($tagName = 'div')

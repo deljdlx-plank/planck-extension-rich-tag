@@ -13,6 +13,32 @@ class Association extends Entity
     use HasProperties;
 
 
+    /**
+     * @var Tag
+     */
+    protected $tag;
+
+
+
+    public function setEntity(Entity $entity)
+    {
+        $this->target = $entity;
+        $this->setValue('target_fingerprint', $entity->getFingerPrint());
+        $this->setValue('target_id', $entity->getId());
+        return $this;
+    }
+
+    public function setTag(Tag $tag)
+    {
+        $this->tag = $tag;
+        $this->setValue('tag_id', $tag->getId());
+
+        return $this;
+    }
+
+
+
+
 
 
 }
