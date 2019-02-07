@@ -4,6 +4,8 @@
 namespace Planck\Extension\RichTag\Module\Tag\Router;
 
 
+use Phi\HTML\CSSFile;
+use Phi\HTML\JavascriptFile;
 use Planck\Extension\RichTag\Module\Tag\View\Index;
 use Planck\Router;
 
@@ -23,8 +25,8 @@ class Main extends Router
 
             $assets = $this->router->getAssets();
 
-            //$assets[] = new JavascriptFile('vendor/jstree/dist/jstree.js');
-            //$assets[] = new CSSFile('vendor/jstree/dist/themes/default/style.css');
+            $assets[] = new JavascriptFile('vendor/jstree/dist/jstree.js');
+            $assets[] = new CSSFile('vendor/jstree/dist/themes/default/style.css');
 
 
             $this->response->addExtraData('resources', $assets);
