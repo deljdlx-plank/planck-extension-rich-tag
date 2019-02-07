@@ -5,6 +5,7 @@ namespace Planck\Extension\RichTag\View\Component;
 
 
 
+use Planck\Exception;
 use Planck\View\Component;
 
 class EntityTagInput extends Component
@@ -19,7 +20,10 @@ class EntityTagInput extends Component
     public function loadEntityById($entityClassName, $entityId)
     {
         $entity = $this->getApplication()->getModelEntity($entityClassName);
-        $entity->loadById($entityId);
+
+        $entity->loadById($entityId, true);
+
+
         $this->setVariable('entity', $entity);
     }
 
