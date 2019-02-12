@@ -25,6 +25,7 @@ class Association extends Entity
         $this->target = $entity;
         $this->setValue('target_fingerprint', $entity->getFingerPrint());
         $this->setValue('target_id', $entity->getId());
+        $this->setValue('target_type', get_class($entity));
         return $this;
     }
 

@@ -21,6 +21,16 @@ class Tag extends Repository
 
 
 
+    public function store(\Phi\Model\Entity $object, $dryRun = false)
+    {
+
+        if(!$object->getValue('slug')) {
+            $object->setSlug();
+        }
+        return parent::store($object, $dryRun);
+    }
+
+
     public function createIfNotExists($label)
     {
         $tagDataset = $this->getBy('name', $label);
@@ -49,6 +59,9 @@ class Tag extends Repository
 
     public function tagEntity(Entity $entity, \Planck\Extension\RichTag\Model\Entity\Tag $tag)
     {
+        /**
+         * @var \Planck\Extension\RichTag\Model\Entity\Association $association
+         */
         $association = $this->getApplication()->getModelEntity(AssociationEntity::class);
         $association->setTag($tag);
         $association->setEntity($entity);

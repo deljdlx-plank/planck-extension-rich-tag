@@ -6,6 +6,7 @@ CREATE TABLE tag_association
 
     type_id INT,
 
+    target_type varchar(1024),
     target_id varchar(1024),
     target_fingerprint varchar(2048),
 

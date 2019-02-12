@@ -29,6 +29,34 @@ class Association extends Repository
     }
 
 
+    public function getEntitiesByTag(\Planck\Extension\RichTag\Model\Entity\Tag $tag, $targetType)
+    {
+        $targetEntity = $this->model->getEntity($targetType);
+        $targetRepository = $targetEntity->getRepository();
+
+        $query = "
+            SELECT ".$targetRepository->getEntityFieldsString('entity.')."
+                FROM ".$this->getTableName()." association
+                JOIN ".$targetRepository->getTableName()." entity
+                    ON association.target_id = entity.".$targetEntity->getPrimaryKeyFieldName()." 
+                WHERE
+                    association.tag_id = :tag_Id
+                    AND association.target_type = :target_type
+                ORDER BY
+                    entity.creation_date DESC,
+                    entity.update_date DESC
+        ";
+
+
+        $dataset = $this->queryAndGetDataset($query, array(
+            ':tag_Id' => $tag->getId(),
+            ':target_type' => $targetType
+        ), $targetType);
+
+        return $dataset;
+
+    }
+
 
 
     public function deleteByTargetFingerPrint($fingerPrint)
@@ -55,12 +83,6 @@ class Association extends Repository
                 ON tag.id = association.tag_id
             WHERE association.target_fingerprint = :fingerprint
         ";
-
-
-        $rows = $this->queryAndFetch($query, array(
-            ':fingerprint' => $fingerPrint,
-        ));
-
 
 
 
