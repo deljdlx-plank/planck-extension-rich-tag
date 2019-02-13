@@ -7,7 +7,7 @@ namespace Planck\Extension\RichTag\Module\Tag\Router;
 use Phi\HTML\CSSFile;
 use Phi\HTML\JavascriptFile;
 use Planck\Extension\RichTag\Module\Tag\View\Index;
-use Planck\Router;
+use Planck\Routing\Router;
 
 
 

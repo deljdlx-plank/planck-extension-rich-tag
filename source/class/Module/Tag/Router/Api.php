@@ -6,7 +6,7 @@ namespace Planck\Extension\RichTag\Module\Tag\Router;
 
 
 use Planck\Extension\RichTag\Model\Repository\Tag;
-use Planck\Router;
+use Planck\Routing\Router;
 
 
 
