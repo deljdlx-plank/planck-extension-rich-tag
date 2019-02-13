@@ -23,10 +23,6 @@ class Main extends Router
 
         $this->get('list', '`/tags`', function() {
 
-            $assets = $this->router->getAssets();
-
-
-            $this->response->addExtraData('resources', $assets);
 
             $view = new Index();
             echo $view->render();
