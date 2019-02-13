@@ -25,9 +25,6 @@ class Main extends Router
 
             $assets = $this->router->getAssets();
 
-            $assets[] = new JavascriptFile('vendor/jstree/dist/jstree.js');
-            $assets[] = new CSSFile('vendor/jstree/dist/themes/default/style.css');
-
 
             $this->response->addExtraData('resources', $assets);
 
