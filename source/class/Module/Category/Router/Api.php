@@ -27,7 +27,7 @@ class Api extends EntityTreeApiRouter
 
     public function getRoutePath()
     {
-        return '/tag/api/category';
+        return '/tag/category/api';
     }
 
 
